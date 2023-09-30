@@ -7,28 +7,61 @@ import { Filter } from "./Filter/Filter";
 
 export class App extends Component {
   state = {
-    contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ],
+    // contacts: [
+    //   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+    //   { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+    //   { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+    //   { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    // ],
+    contacts: [],
     filter: "",
   };
+
+  componentDidMount() {
+
+    try {
+      const storedState = localStorage.getItem("Contacts_Local_Storage")
+
+      if (storedState) {
+        this.setState(JSON.parse(storedState))
+      }
+
+    } catch (error) {
+      alert("Error occured, please try again")
+    }
+
+  }
+
+  updateLocalStorage() {
+    localStorage.setItem("Contacts_Loca_Storage", JSON.stringify(this.state))
+  }
+  
+  componentDidUpdate(prevProps, prevState) {
+
+    if (prevState.contacts !== this.state.contacts || prevState.filter !== this.state.filter) {
+      this.updateLocalStorage();
+    }
+    
+  }
 
   newContact = (name, number) => {
 
     const { contacts } = this.state;
 
     const contactNames = contacts.map(contact => {
+
       return contact.name;
+
     });
 
     if (contactNames.includes(name))
+      
       return alert(`${name} is alredy in contacts`);
 
     this.setState(prevState => ({
+
       contacts: [...prevState.contacts, { id: nanoid(), name, number }]
+
     }))
   }
 
@@ -42,14 +75,19 @@ export class App extends Component {
   }
 
   deleteContact = id => {
+
     this.setState(prevState => ({
+
       contacts: prevState.contacts.filter(contact => contact.id !== id)
+
     }))
   }
 
   filterContacts = newValue => {
+
     this.setState({
       filter: newValue
+
     })
   }
 
