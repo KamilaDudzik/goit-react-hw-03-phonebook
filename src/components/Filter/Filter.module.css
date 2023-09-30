@@ -1,0 +1,20 @@
+.filter {
+    padding-left: 15px;
+}
+
+.filterInput {
+  display: block;
+  margin-top: 10px;
+  padding: 7px;
+  border: 1px solid black;
+  border-radius: 5px;
+  transition: all 0.3s linear;
+  outline: none;
+  margin-left: 15px;
+}
+
+.filterInput:hover {  
+    -webkit-box-shadow: 0px 0px 6px 1px rgba(118, 169, 231, 1);
+    -moz-box-shadow: 0px 0px 6px 1px rgba(118, 169, 231, 1);
+    box-shadow: 0px 0px 6px 1px rgba(118, 169, 231, 1);
+}
