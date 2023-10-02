@@ -35,8 +35,17 @@ export class ContactList extends Component {
     }
 }
 
+ContactList.defaultProps = { contacts: [] }
+
 ContactList.propTypes = {
-    contacts: PropTypes.object.isRequired,
+    // contacts: PropTypes.object.isRequired,
+    contacts: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            number: PropTypes.string.isRequired
+        }).isRequired,
+    ),
     onClick: PropTypes.func.isRequired,
     value: PropTypes.string.isRequired
 }
