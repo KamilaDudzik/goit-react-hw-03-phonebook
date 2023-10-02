@@ -33,7 +33,7 @@ export class App extends Component {
   }
 
   updateLocalStorage() {
-    localStorage.setItem("Contacts_Loca_Storage", JSON.stringify(this.state))
+    localStorage.setItem("Contacts_Local_Storage", JSON.stringify(this.state))
   }
   
   componentDidUpdate(prevProps, prevState) {
