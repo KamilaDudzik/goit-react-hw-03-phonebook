@@ -35,7 +35,7 @@ export class ContactList extends Component {
     }
 }
 
-ContactList.defaultProps = { contacts: [] }
+// ContactList.defaultProps = { contacts: [] }
 
 ContactList.propTypes = {
     // contacts: PropTypes.object.isRequired,
