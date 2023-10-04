@@ -9,6 +9,11 @@ export class ContactList extends Component {
         this.props.onClick(value);
     }
 
+    // deleteContact = event => {
+    //     const { value } = event.target;
+    //     this.props.onClick(value);
+    // }
+
     render() {
         const { contacts } = this.props;
 
@@ -47,5 +52,5 @@ ContactList.propTypes = {
         }).isRequired,
     ),
     onClick: PropTypes.func.isRequired,
-    value: PropTypes.string.isRequired
+    // value: PropTypes.string.isRequired // not used in the component
 }
